@@ -7,13 +7,31 @@
     {
       "name": "streamlit",
       "port": 8501
+    },
+    {
+      "name": "api",
+      "port": 8000
+    },
+    {
+      "name": "frontend",
+      "port": 5173
     }
   ],
   "terminals": [
     {
       "name": "streamlit",
       "command": "set -a && [ -f .cursor/runtime.env ] && . .cursor/runtime.env; set +a && ./.venv/bin/streamlit run app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true",
-      "description": "Orion Streamlit web app"
+      "description": "Orion v1 Streamlit web app (port 8501)"
+    },
+    {
+      "name": "api",
+      "command": "set -a && [ -f .cursor/runtime.env ] && . .cursor/runtime.env; set +a && ./.venv/bin/python -m uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8000 --reload",
+      "description": "Orion v2 FastAPI backend (port 8000)"
+    },
+    {
+      "name": "frontend",
+      "command": "cd frontend && npm run dev -- --host 0.0.0.0 --port 5173",
+      "description": "Orion v2 React/Vite dev server (port 5173, proxies /api to :8000)"
     }
   ]
 }
