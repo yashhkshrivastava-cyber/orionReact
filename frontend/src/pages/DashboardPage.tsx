@@ -49,7 +49,7 @@ const metricIcons: Record<string, React.ReactNode> = {
   Expense: <Wallet className="h-4 w-4" />,
   Headcount: <Users className="h-4 w-4" />,
   'Active Cases': <Briefcase className="h-4 w-4" />,
-  'KM Today': <Gauge className="h-4 w-4" />,
+  'KM Allowance': <Gauge className="h-4 w-4" />,
   'Open Opportunities': <Target className="h-4 w-4" />,
 }
 
@@ -75,8 +75,7 @@ export function DashboardPage() {
 
   const expenseData = data.expense.months.map((m, i) => ({
     month: m,
-    Prospective: data.expense.prospective[i],
-    Committed: data.expense.committed[i],
+    Types: data.expense.types[i],
   }))
 
   return (
@@ -84,7 +83,7 @@ export function DashboardPage() {
       <PageHeader
         eyebrow="Analytics"
         title="Command Center"
-        subtitle="Real-time overview of revenue, expenses, headcount, and pipeline performance."
+        subtitle="Live overview from ODS — revenue, headcount, cases, and pipeline."
       />
 
       {/* Metrics grid */}
@@ -111,7 +110,10 @@ export function DashboardPage() {
       {/* Charts row 1 */}
       <div className="grid gap-5 lg:grid-cols-2">
         <Card glow className="animate-slide-up stagger-1">
-          <CardHeader title="Revenue breakdown" subtitle="Prospective vs committed by month" />
+          <CardHeader
+            title="Revenue breakdown"
+            subtitle="Prospective vs committed from active cases (monthly expected revenue)"
+          />
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={revenueData} barGap={2}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -126,16 +128,15 @@ export function DashboardPage() {
         </Card>
 
         <Card className="animate-slide-up stagger-2">
-          <CardHeader title="Expense breakdown" subtitle="Monthly spend analysis" />
+          <CardHeader title="Expense type catalog" subtitle="Expense types added by month (ODS)" />
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={expenseData} barGap={2}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="month" axisLine={false} tickLine={false} />
-              <YAxis axisLine={false} tickLine={false} tickFormatter={(v) => `${(v / 100000).toFixed(0)}L`} />
+              <YAxis axisLine={false} tickLine={false} allowDecimals={false} />
               <Tooltip contentStyle={tooltipStyle} />
               <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '12px' }} />
-              <Bar dataKey="Prospective" fill={CHART_COLORS[4]} radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Committed" fill={CHART_COLORS[2]} radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Types" fill={CHART_COLORS[4]} radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </Card>
@@ -144,7 +145,7 @@ export function DashboardPage() {
       {/* Charts row 2 */}
       <div className="grid gap-5 lg:grid-cols-2">
         <Card className="animate-slide-up stagger-3">
-          <CardHeader title="Headcount distribution" subtitle="Active vs inactive workforce" />
+          <CardHeader title="Headcount distribution" subtitle="Employee status from ODS" />
           <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie
@@ -166,7 +167,7 @@ export function DashboardPage() {
         </Card>
 
         <Card className="animate-slide-up stagger-4">
-          <CardHeader title="Opportunity pipeline" subtitle="Deal stage funnel" />
+          <CardHeader title="Case pipeline" subtitle="Prospective, active, and inactive cases" />
           <ResponsiveContainer width="100%" height={280}>
             <FunnelChart>
               <Tooltip contentStyle={tooltipStyle} />
@@ -183,7 +184,7 @@ export function DashboardPage() {
 
       {/* Case revenue */}
       <Card>
-        <CardHeader title="Case-wise revenue (YTD)" subtitle="Top performing engagements" />
+        <CardHeader title="Case-wise revenue" subtitle="Monthly expected revenue by active case" />
         <ResponsiveContainer width="100%" height={260}>
           <BarChart data={data.case_revenue} layout="vertical" barSize={20}>
             <CartesianGrid strokeDasharray="3 3" horizontal={false} />
