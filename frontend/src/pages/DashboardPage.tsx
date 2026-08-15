@@ -32,14 +32,16 @@ import { Card, CardHeader } from '../components/ui/Card'
 import { LoadingState } from '../components/ui/DataTable'
 import { Alert } from '../components/ui/Alert'
 
-const CHART_COLORS = ['#22d3ee', '#a78bfa', '#fbbf24', '#34d399', '#fb7185', '#60a5fa']
+const CHART_COLORS = ['#38bdf8', '#a78bfa', '#fbbf24', '#34d399', '#fb7185', '#60a5fa', '#f472b6', '#2dd4bf']
 
 const tooltipStyle = {
-  background: 'rgba(12, 12, 18, 0.95)',
-  border: '1px solid rgba(255,255,255,0.1)',
-  borderRadius: '12px',
-  fontSize: '12px',
-  boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+  background: 'rgba(15, 22, 41, 0.96)',
+  border: '1px solid rgba(56, 189, 248, 0.25)',
+  borderRadius: '14px',
+  fontSize: '13px',
+  fontWeight: 500,
+  color: '#f8fafc',
+  boxShadow: '0 12px 40px rgba(0,0,0,0.45), 0 0 24px rgba(56, 189, 248, 0.08)',
 }
 
 const metricIcons: Record<string, React.ReactNode> = {
@@ -88,8 +90,8 @@ export function DashboardPage() {
       {/* Metrics grid */}
       <section>
         <div className="mb-4 flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-cyan-400" />
-          <h2 className="text-sm font-semibold text-[color:var(--color-text-muted)]">Key metrics</h2>
+          <TrendingUp className="h-4 w-4 text-sky-400" />
+          <h2 className="text-sm font-bold text-[color:var(--color-text-muted)]">Key metrics</h2>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {data.metrics.map((m, i) => (
@@ -201,16 +203,17 @@ export function DashboardPage() {
       <section>
         <div className="mb-4 flex items-center gap-2">
           <TrendingDown className="h-4 w-4 text-violet-400" />
-          <h2 className="text-sm font-semibold text-[color:var(--color-text-muted)]">Performance snapshot</h2>
+          <h2 className="text-sm font-bold text-[color:var(--color-text-muted)]">Performance snapshot</h2>
         </div>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {data.snapshot.map((s) => (
+        <div className="grid gap-4 sm:grid-cols-3">
+          {data.snapshot.map((s, i) => (
             <div
               key={s.label}
-              className="glass rounded-2xl p-5 transition-all hover:border-violet-400/20 hover:bg-white/[0.04]"
+              className="glass rounded-2xl p-5 transition-all duration-300 hover:border-violet-400/30 hover:bg-white/[0.06] hover:-translate-y-1 animate-slide-up"
+              style={{ animationDelay: `${i * 0.08}s`, opacity: 0 }}
             >
-              <p className="text-xs text-[color:var(--color-text-muted)]">{s.label}</p>
-              <p className="mt-2 font-display text-xl font-bold text-violet-300">{s.value}</p>
+              <p className="text-xs font-semibold text-[color:var(--color-text-muted)]">{s.label}</p>
+              <p className="mt-2.5 font-display text-2xl font-bold text-violet-300">{s.value}</p>
             </div>
           ))}
         </div>

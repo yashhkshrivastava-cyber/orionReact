@@ -12,13 +12,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-r from-cyan-400 to-cyan-500 text-slate-950 font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:brightness-110',
+    'bg-gradient-to-r from-sky-400 via-sky-500 to-blue-500 text-white font-semibold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
   secondary:
-    'glass text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-hover)] border-[color:var(--color-border-strong)]',
-  ghost: 'text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-white/5',
+    'glass text-[color:var(--color-text)] hover:bg-[color:var(--color-surface-hover)] border-[color:var(--color-border-strong)] hover:border-sky-400/30 hover:-translate-y-0.5 active:translate-y-0',
+  ghost:
+    'text-[color:var(--color-text-muted)] hover:text-[color:var(--color-text)] hover:bg-white/8 hover:-translate-y-0.5 active:translate-y-0',
   danger:
-    'bg-gradient-to-r from-rose-500 to-rose-600 text-white font-semibold shadow-lg shadow-rose-500/25 hover:brightness-110',
-  gold: 'bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-semibold shadow-lg shadow-amber-500/25 hover:brightness-110',
+    'bg-gradient-to-r from-rose-500 to-rose-600 text-white font-semibold shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
+  gold:
+    'bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 text-slate-950 font-semibold shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0',
 }
 
 const sizes: Record<Size, string> = {
@@ -39,7 +41,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={`inline-flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 transition-all duration-250 ease-out disabled:opacity-50 disabled:pointer-events-none disabled:translate-y-0 interactive-scale ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={disabled || loading}
       {...props}
     >

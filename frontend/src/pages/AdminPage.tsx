@@ -123,9 +123,9 @@ export function AdminPage() {
         title="Access Control"
         subtitle="Manage user accounts, roles, and platform permissions."
         action={
-          <div className="flex items-center gap-2 rounded-xl glass px-4 py-2">
-            <Users className="h-4 w-4 text-cyan-400" />
-            <span className="text-sm font-semibold">{users.length} users</span>
+          <div className="flex items-center gap-2 rounded-xl glass px-4 py-2.5 border border-sky-400/20 bg-gradient-to-r from-sky-400/10 to-violet-400/5 animate-scale-in">
+            <Users className="h-4 w-4 text-sky-400" />
+            <span className="text-sm font-bold text-[color:var(--color-text)]">{users.length} users</span>
           </div>
         }
       />
@@ -239,7 +239,7 @@ export function AdminPage() {
               {/* Profile card */}
               <Card className="lg:col-span-2">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 font-display text-xl font-bold text-white shadow-lg">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 via-blue-500 to-violet-500 font-display text-xl font-bold text-white shadow-xl ring-2 ring-white/10">
                     {selected.display_name.charAt(0)}
                   </div>
                   <div>
