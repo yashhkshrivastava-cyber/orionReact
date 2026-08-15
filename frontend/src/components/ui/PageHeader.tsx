@@ -57,9 +57,9 @@ export function MetricCard({
   }
 
   return (
-    <div className="glass group rounded-2xl p-4 transition-all duration-300 hover:border-sky-400/25 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/5">
+    <div className="glass group rounded-2xl p-4 min-w-0 transition-all duration-300 hover:border-sky-400/25 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-500/5">
       <div className="flex items-start justify-between">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)]">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-text-muted)] truncate">
           {label}
         </p>
         {icon && (

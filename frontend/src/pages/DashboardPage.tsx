@@ -93,9 +93,9 @@ export function DashboardPage() {
           <TrendingUp className="h-4 w-4 text-sky-400" />
           <h2 className="text-sm font-bold text-[color:var(--color-text-muted)]">Key metrics</h2>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6">
           {data.metrics.map((m, i) => (
-            <div key={m.label} className="animate-slide-up" style={{ animationDelay: `${i * 0.05}s`, opacity: 0 }}>
+            <div key={m.label} className="min-w-0 animate-slide-up" style={{ animationDelay: `${i * 0.05}s`, opacity: 0 }}>
               <MetricCard
                 label={m.label}
                 value={m.value}
