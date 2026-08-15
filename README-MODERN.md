@@ -22,7 +22,7 @@ scripts/           start-api.sh, start-frontend.sh, start-modern.sh
 
 - Cookie-based session auth (admin / editor / viewer roles)
 - Home launch screen with workspace cards
-- Dashboard with KPIs and charts (mock data, same as Streamlit)
+- Dashboard with KPIs and charts sourced from `orion_ods` (cases, employees, expense types)
 - Data Management — ODS CRUD for all 6 entities
 - DW SCD Type 2 load for Business Domain
 - Admin panel — user CRUD, roles, ODS/DW access
@@ -80,7 +80,7 @@ If `npm` is not found: `brew install node`
 | `POST /api/auth/login` | Sign in (sets httpOnly cookie) |
 | `POST /api/auth/logout` | Sign out |
 | `GET /api/auth/me` | Current user |
-| `GET /api/dashboard` | Dashboard mock metrics |
+| `GET /api/dashboard` | Dashboard metrics from ODS |
 | `GET/POST/PUT/DELETE /api/entities/...` | ODS CRUD |
 | `GET/POST /api/dw/...` | DW preview & load |
 | `GET/POST/PATCH/DELETE /api/users/...` | Admin user management |
