@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react'
 
 const fieldClass =
-  'w-full rounded-xl border border-[color:var(--color-border)] bg-white/[0.03] px-3.5 py-2.5 text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-faint)] transition-all duration-200 focus:border-cyan-400/50 focus:bg-white/[0.05] focus:ring-2 focus:ring-cyan-400/20'
+  'w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-bg-surface)]/60 px-3.5 py-2.5 text-sm text-[color:var(--color-text)] placeholder:text-[color:var(--color-text-faint)] transition-all duration-250 focus:border-sky-400/60 focus:bg-[color:var(--color-bg-surface)] focus:ring-2 focus:ring-sky-400/25 focus:shadow-[0_0_20px_rgba(56,189,248,0.08)]'
 
 export function Field({
   label,
@@ -15,7 +15,7 @@ export function Field({
   return (
     <div className={`space-y-1.5 ${className}`}>
       {label && (
-        <label className="block text-xs font-medium text-[color:var(--color-text-muted)]">
+        <label className="block text-xs font-semibold text-[color:var(--color-text-muted)] tracking-wide">
           {label}
         </label>
       )}
@@ -48,14 +48,20 @@ export function Checkbox({
   return (
     <label className="flex items-center gap-2.5 cursor-pointer group">
       <span
-        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
           checked
-            ? 'border-cyan-400 bg-cyan-400/20 text-cyan-400'
-            : 'border-[color:var(--color-border-strong)] bg-white/[0.02] group-hover:border-cyan-400/40'
+            ? 'border-sky-400 bg-sky-400/25 text-sky-300 scale-105 shadow-[0_0_12px_rgba(56,189,248,0.25)]'
+            : 'border-[color:var(--color-border-strong)] bg-white/[0.03] group-hover:border-sky-400/50 group-hover:bg-sky-400/5'
         }`}
       >
         {checked && (
-          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <svg
+            className="h-3 w-3 animate-scale-in"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={3}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         )}
@@ -66,7 +72,7 @@ export function Checkbox({
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      <span className="text-sm text-[color:var(--color-text-muted)] group-hover:text-[color:var(--color-text)]">
+      <span className="text-sm text-[color:var(--color-text-muted)] group-hover:text-[color:var(--color-text)] transition-colors">
         {label}
       </span>
     </label>

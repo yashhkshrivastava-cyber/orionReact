@@ -31,7 +31,7 @@ export interface EntityMeta {
 export interface DashboardData {
   metrics: { label: string; value: string; delta: string; delta_type: string }[]
   revenue: { months: string[]; prospective: number[]; committed: number[] }
-  expense: { months: string[]; prospective: number[]; committed: number[] }
+  expense: { months: string[]; types: number[] }
   headcount: { type: string; count: number }[]
   pipeline: { stage: string; count: number }[]
   case_revenue: { case: string; revenue: number }[]
