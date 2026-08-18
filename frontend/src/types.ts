@@ -30,10 +30,10 @@ export interface EntityMeta {
 
 export interface DashboardData {
   metrics: { label: string; value: string; delta: string; delta_type: string }[]
-  revenue: { months: string[]; prospective: number[]; committed: number[] }
-  expense: { months: string[]; prospective: number[]; committed: number[] }
+  clients_by_status: { type: string; count: number }[]
+  clients_by_type: { type: string; count: number }[]
   headcount: { type: string; count: number }[]
-  pipeline: { stage: string; count: number }[]
+  cases_by_domain: { domain: string; count: number }[]
   case_revenue: { case: string; revenue: number }[]
   snapshot: { label: string; value: string }[]
 }

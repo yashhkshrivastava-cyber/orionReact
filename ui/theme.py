@@ -60,7 +60,7 @@ BRAND_GRADIENT = f"linear-gradient(135deg, {TEAL}, {GOLD}, {CORAL})"
 WORKSPACE_META = {
     "dashboard": {
         "title": "Dashboard",
-        "description": "KPIs, revenue, expenses, and pipeline analytics in one place.",
+        "description": "Live KPIs and charts from ODS clients, cases, and employees.",
     },
     "data": {
         "title": "Data Management",
