@@ -9,7 +9,7 @@ const WORKSPACES = [
     pageId: 'dashboard',
     title: 'Command Center',
     tag: 'Analytics',
-    description: 'Real-time KPIs, revenue trends, pipeline funnel, and performance snapshots.',
+    description: 'Live KPIs and charts from ODS clients, cases, and employees.',
     icon: LayoutDashboard,
     gradient: 'from-cyan-400/20 via-cyan-500/5 to-transparent',
     accent: 'cyan',
